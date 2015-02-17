@@ -50,8 +50,8 @@ Matrix4 projectionMatrix = Matrix4::IDENTITY;
 bool keys[256];
 bool special[256];
 //bool jump = false;
-Vector3 playerPosition(0, 0, 0);
-Vector3 cubePos(10, 0, 0);
+Vector3 playerPosition(0, 1, 0);
+Vector3 cubePos(10, 1, 0);
 float boxAccel = -0.28;
 float boxVel = 300;
 
