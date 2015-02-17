@@ -1,30 +1,34 @@
-﻿Build started 15/02/2015 10:39:05 AM.
-     1>Project "C:\Users\Skyler\Desktop\COMP2501Tutorial5 - ALTERNATE\2501Project\COMP2501Tutorial5\COMP2501Tutorial5.vcxproj" on node 2 (Build target(s)).
+﻿Build started 2015-02-17 1:16:00 PM.
+     1>Project "D:\Documents\GitHub\GameDev\Game\COMP2501Tutorial5\COMP2501Tutorial5.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I../GL/include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Main.cpp
+         C:\Program Files\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I../GL/include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Main.cpp
          Main.cpp
-     1>c:\users\skyler\desktop\comp2501tutorial5 - alternate\2501project\comp2501tutorial5\cube.h(20): warning C4305: 'initializing' : truncation from 'double' to 'float'
-     1>c:\users\skyler\desktop\comp2501tutorial5 - alternate\2501project\comp2501tutorial5\cube.h(56): warning C4305: '=' : truncation from 'double' to 'float'
-     1>c:\users\skyler\desktop\comp2501tutorial5 - alternate\2501project\comp2501tutorial5\cube.h(65): warning C4305: '-=' : truncation from 'double' to 'float'
-     1>c:\users\skyler\desktop\comp2501tutorial5 - alternate\2501project\comp2501tutorial5\text.h(25): warning C4101: 'normalLoc' : unreferenced local variable
-     1>c:\users\skyler\desktop\comp2501tutorial5 - alternate\2501project\comp2501tutorial5\text.h(93): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\skyler\desktop\comp2501tutorial5 - alternate\2501project\comp2501tutorial5\player.h(20): warning C4305: 'initializing' : truncation from 'double' to 'float'
-     1>c:\users\skyler\desktop\comp2501tutorial5 - alternate\2501project\comp2501tutorial5\player.h(56): warning C4305: '=' : truncation from 'double' to 'float'
-     1>c:\users\skyler\desktop\comp2501tutorial5 - alternate\2501project\comp2501tutorial5\player.h(65): warning C4305: '-=' : truncation from 'double' to 'float'
-     1>c:\users\skyler\desktop\comp2501tutorial5 - alternate\2501project\comp2501tutorial5\main.cpp(55): warning C4305: 'initializing' : truncation from 'double' to 'float'
-     1>c:\users\skyler\desktop\comp2501tutorial5 - alternate\2501project\comp2501tutorial5\main.cpp(157): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\skyler\desktop\comp2501tutorial5 - alternate\2501project\comp2501tutorial5\main.cpp(188): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\skyler\desktop\comp2501tutorial5 - alternate\2501project\comp2501tutorial5\main.cpp(194): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(356) : see declaration of 'sprintf'
-     1>c:\users\skyler\desktop\comp2501tutorial5 - alternate\2501project\comp2501tutorial5\main.cpp(278): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>d:\documents\github\gamedev\game\comp2501tutorial5\cube.h(20): warning C4305: 'initializing' : truncation from 'double' to 'float'
+     1>d:\documents\github\gamedev\game\comp2501tutorial5\cube.h(56): warning C4305: '=' : truncation from 'double' to 'float'
+     1>d:\documents\github\gamedev\game\comp2501tutorial5\cube.h(65): warning C4305: '-=' : truncation from 'double' to 'float'
+     1>d:\documents\github\gamedev\game\comp2501tutorial5\text.h(25): warning C4101: 'normalLoc' : unreferenced local variable
+     1>d:\documents\github\gamedev\game\comp2501tutorial5\text.h(93): warning C4018: '<' : signed/unsigned mismatch
+     1>d:\documents\github\gamedev\game\comp2501tutorial5\player.h(21): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>d:\documents\github\gamedev\game\comp2501tutorial5\player.h(97): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>d:\documents\github\gamedev\game\comp2501tutorial5\player.h(98): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>d:\documents\github\gamedev\game\comp2501tutorial5\player.h(99): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>d:\documents\github\gamedev\game\comp2501tutorial5\player.h(100): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>d:\documents\github\gamedev\game\comp2501tutorial5\player.h(101): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>d:\documents\github\gamedev\game\comp2501tutorial5\player.h(102): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>d:\documents\github\gamedev\game\comp2501tutorial5\main.cpp(55): warning C4305: 'initializing' : truncation from 'double' to 'float'
+     1>d:\documents\github\gamedev\game\comp2501tutorial5\main.cpp(192): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>d:\documents\github\gamedev\game\comp2501tutorial5\main.cpp(198): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 12.0\vc\include\stdio.h(356) : see declaration of 'sprintf'
+     1>d:\documents\github\gamedev\game\comp2501tutorial5\main.cpp(203): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>d:\documents\github\gamedev\game\comp2501tutorial5\main.cpp(283): warning C4305: 'argument' : truncation from 'double' to 'float'
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Skyler\Desktop\COMP2501Tutorial5 - ALTERNATE\2501Project\Debug\COMP2501Tutorial5.exe" /INCREMENTAL /NOLOGO /LIBPATH:../GL/lib SOIL.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Skyler\Desktop\COMP2501Tutorial5 - ALTERNATE\2501Project\Debug\COMP2501Tutorial5.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Skyler\Desktop\COMP2501Tutorial5 - ALTERNATE\2501Project\Debug\COMP2501Tutorial5.lib" /MACHINE:X86 Debug\Main.obj
+         C:\Program Files\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Documents\GitHub\GameDev\Game\Debug\COMP2501Tutorial5.exe" /INCREMENTAL /NOLOGO /LIBPATH:../GL/lib SOIL.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Documents\GitHub\GameDev\Game\Debug\COMP2501Tutorial5.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Documents\GitHub\GameDev\Game\Debug\COMP2501Tutorial5.lib" /MACHINE:X86 Debug\Main.obj
          Debug\mathlib.obj
          Debug\Camera.obj
          Debug\Shader.obj
-         COMP2501Tutorial5.vcxproj -> C:\Users\Skyler\Desktop\COMP2501Tutorial5 - ALTERNATE\2501Project\Debug\COMP2501Tutorial5.exe
-     1>Done Building Project "C:\Users\Skyler\Desktop\COMP2501Tutorial5 - ALTERNATE\2501Project\COMP2501Tutorial5\COMP2501Tutorial5.vcxproj" (Build target(s)).
+         COMP2501Tutorial5.vcxproj -> D:\Documents\GitHub\GameDev\Game\Debug\COMP2501Tutorial5.exe
+     1>Done Building Project "D:\Documents\GitHub\GameDev\Game\COMP2501Tutorial5\COMP2501Tutorial5.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.65
+Time Elapsed 00:00:05.72

@@ -16,9 +16,13 @@ public:
 	GLuint textureID;
 	GLuint mvpMatrixLoc, vertexLoc, textUnitLoc, colorLoc, tCoordLoc;
 	GLuint buffers[3];
-	float velocity = 250;
-	float accel = -0.28;
+	Vector3 velocity = Vector3(0, 0, 0);
+	Vector3 jumpV = Vector3(0, 5, 0);
+	Vector3 gAccel = Vector3(0, -9.8, 0);
+	int len = 1;
 	bool jump = false;
+	bool jumping = false;
+	bool applyG = false;
 	float landHeight = 0.0;
 
 	Shader * shader;
@@ -49,20 +53,34 @@ public:
 
 		init_geometry();
 	}
-	void jumpplayer(float deltaTime){
-		if (position.y < 1 && velocity < 0){
+	void jumpPlayer()
+	{
+		if (jump && !jumping)
+		{
+			jumping = true;
+			applyG = true;
+			velocity += jumpV;
 			jump = false;
-			velocity = 250;
-			accel = -0.28;
-			position.y = landHeight;
-
 		}
-		else {
-			velocity = velocity + accel*deltaTime;
-			position.y += velocity / (deltaTime * 40);
+		
+	}
+	void updatePlayer(float deltaTime)
+	{
+		float dT = deltaTime / 1000.f;
+		Vector3 distance;
+		distance = velocity * dT + 1 / 2 * gAccel * dT * dT;
+		if ((position += distance).y <= landHeight+len)
+		{
+			position.y = landHeight+len;
+			velocity.y = 0;
+			applyG = false;
+			jumping = false;
+		}
 
-
-			accel -= 0.017;
+		if (applyG)
+		{
+			position += distance;
+			velocity += gAccel * dT;
 
 		}
 	}
@@ -76,12 +94,12 @@ public:
 		numIndices = num_indices;
 
 
-		Vertex vertices[num_vertices] = { Vertex(-1, -1, 1), Vertex(1, -1, 1), Vertex(-1, 1, 1), Vertex(1, 1, 1),  //front face  v0,v1,v2,v3
-			Vertex(1, -1, -1), Vertex(-1, -1, -1), Vertex(1, 1, -1), Vertex(-1, 1, -1),   //back face   v4,v5,v6,v7
-			Vertex(1, -1, 1), Vertex(1, -1, -1), Vertex(1, 1, 1), Vertex(1, 1, -1),   //right face  v1 v4 v3 v6
-			Vertex(-1, -1, -1), Vertex(-1, -1, 1), Vertex(-1, 1, -1), Vertex(-1, 1, 1),   //left face   v5 v0 v7 v2
-			Vertex(-1, -1, -1), Vertex(1, -1, -1), Vertex(-1, -1, 1), Vertex(1, -1, 1),  //bottom face v5 v4 v0 v1
-			Vertex(-1, 1, 1), Vertex(1, 1, 1), Vertex(-1, 1, -1), Vertex(1, 1, -1) }; //top face    v2 v3 v7 v6
+		Vertex vertices[num_vertices] = { Vertex(-len, -len, len), Vertex(len, -len, len), Vertex(-len, len, len), Vertex(len, len, len),  //front face  v0,v1,v2,v3
+			Vertex(len, -len, -len), Vertex(-len, -len, -len), Vertex(len, len, -len), Vertex(-len, len, -len),   //back face   v4,v5,v6,v7
+			Vertex(len, -len, len), Vertex(len, -len, -len), Vertex(len, len, len), Vertex(len, len, -len),   //right face  v1 v4 v3 v6
+			Vertex(-len, -len, -len), Vertex(-len, -len, len), Vertex(-len, len, -len), Vertex(-len, len, len),   //left face   v5 v0 v7 v2
+			Vertex(-len, -len, -len), Vertex(len, -len, -len), Vertex(-len, -len, len), Vertex(len, -len, len),  //bottom face v5 v4 v0 v1
+			Vertex(-len, len, len), Vertex(len, len, len), Vertex(-len, len, -len), Vertex(len, len, -len) }; //top face    v2 v3 v7 v6
 
 		Color colors[num_vertices] = { Color(1, 0, 0, 1), Color(1, 0, 0, 1), Color(1, 0, 0, 1), Color(1, 0, 0, 1), //red
 			Color(0, 1, 0, 1), Color(0, 1, 0, 1), Color(0, 1, 0, 1), Color(0, 1, 0, 1),  //green

@@ -98,6 +98,12 @@ void initShaders()
 
 void handleInput(int deltatime)
 {
+	if (keys[' '] && !player->jumping )
+	{
+		player->jump = true;
+	}
+
+
 	float deltaseconds = deltatime / 1000.0f;
 	if (keys['i']) player->position.z -= 10 * deltaseconds;
 	if (keys['k']) player->position.z += 10 * deltaseconds;
@@ -149,12 +155,9 @@ void renderWin1(Window win,int currentTime, int deltaTime)
 	//need to draw skybox before the quad with transparent parts
 	skybox->render_self(projectionMatrix*viewMatrix, camera1->getPosition(), win1.zFar);
 
-    if (keys[' ']){
-		player->jump = true;
-    }
 
 	if (player->jump)
-		player->jumpplayer(deltaTime);
+		player->jumpPlayer();
 
 	if ((player->position.x < (cube->position.x + 1) && player->position.x >(cube->position.x - 1))
 		&&(player->position.y < 3.0/*&& player->position.y <= cube->position.y + 6*/) ){
@@ -164,8 +167,9 @@ void renderWin1(Window win,int currentTime, int deltaTime)
 	else {
 		//player->landHeight = 0;
 	}
-	cout << "cubePos" << cube->position.y << endl;
-	cout << "playerPos" << player->position.y << endl;
+	//cout << "cubePos" << cube->position.y << endl;
+	//cout << "playerPos" << player->position.y << endl;
+	cout << "playerV" << player->velocity.y << endl;
 
 
 	modelMatrix = translationMatrix(player->position);// *ZAxisRotationMatrix*YAxisRotationMatrix*XAxisRotationMatrix;
@@ -194,8 +198,9 @@ void renderWin1(Window win,int currentTime, int deltaTime)
 		camera1->getPosition().x, camera1->getPosition().y, camera1->getPosition().z);
 	std::string message(buffer);
 	text->render(orthographicMatrix, message);
-
+	
 	glutSwapBuffers(); //works with GL_DOUBLE. use glFlush(); instead, if using GL_SINGLE
+	player->updatePlayer(deltaTime);
 }
 
 void keyboardDown(unsigned char key, int mousePositionX, int mousePositionY)
