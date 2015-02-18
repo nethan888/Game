@@ -49,9 +49,8 @@ Shader  *colorShader = 0, *textureShader = 0, *cubeShader=0, *quadShader=0, *sky
 Matrix4 projectionMatrix = Matrix4::IDENTITY;
 bool keys[256];
 bool special[256];
-//bool jump = false;
 Vector3 playerPosition(0, 0, 0);
-Vector3 cubePos(10, 0, 0);
+Vector3 cubePos(4, 1, 0);
 float boxAccel = -0.28;
 float boxVel = 300;
 
@@ -156,20 +155,87 @@ void renderWin1(Window win,int currentTime, int deltaTime)
 	skybox->render_self(projectionMatrix*viewMatrix, camera1->getPosition(), win1.zFar);
 
 
+	//FOLLOWING CODE IS TO DEAL WITH COLLISIONS WITH PLAYER and CUBE 
+	//WILL BE PUT INTP FUNCTIONS
+
+	static int pk = 0;
 	if (player->jump)
 		player->jumpPlayer();
 
-	if ((player->position.x < (cube->position.x + 1) && player->position.x >(cube->position.x - 1))
-		&&(player->position.y < 3.0/*&& player->position.y <= cube->position.y + 6*/) ){
-		cout << cube->position.y + 3 << endl;
-		player->landHeight = cube->position.y + 2;
+	if (player->jumping){
+		cout << "player jumping" << endl;
+	}
+	//cout << "land          " << player->landHeight << endl;
+	//cout << "player bottom " << player->position.y - player->len << endl;
+	//landing on cube
+	if (player->jumping){
+		if (player->position.y > cube->position.y + cube->len){
+			if (((((player->position.x + player->len > cube->position.x - cube->len) && (player->position.x + player->len < cube->position.x + cube->len))
+				|| ((player->position.x - player->len > cube->position.x - cube->len) && (player->position.x - player->len < cube->position.x + cube->len)))
+
+				|| (((cube->position.x + cube->len > player->position.x - player->len) && (cube->position.x + cube->len < player->position.x + player->len))
+				|| ((cube->position.x - cube->len > player->position.x - player->len) && (cube->position.x - cube->len < player->position.x + player->len))))){
+				player->landHeight = cube->position.y + cube->len;
+			}
+			else {
+				player->landHeight = 0;
+			}
+		}
+		else {
+			player->landHeight = 0;
+		}
+	}
+	else if (player->position.y > cube->position.y + cube->len){
+		if (!((((player->position.x + player->len > cube->position.x - cube->len) && (player->position.x + player->len < cube->position.x + cube->len))
+			|| ((player->position.x - player->len > cube->position.x - cube->len) && (player->position.x - player->len < cube->position.x + cube->len)))
+
+			|| (((cube->position.x + cube->len > player->position.x - player->len) && (cube->position.x + cube->len < player->position.x + player->len))
+			|| ((cube->position.x - cube->len > player->position.x - player->len) && (cube->position.x - cube->len < player->position.x + player->len))))){
+			player->landHeight = 0;
+		}
+	}
+	if ((player->position.y - player->len > player->landHeight) && !player->jumping){
+		//make following code into player->fall function
+		float dT = deltaTime / 1000.f;
+		Vector3 distance;
+		distance = player->velocity * dT + 1 / 2 * player->gAccel * dT * dT;
+	    player->position += distance;
+		player->velocity += player->gAccel * dT;
+
+	}
+
+	//dealing with side collisions
+
+	if (player->position.y - player->len < cube->position.y + cube->len - 0.5){
+		if ((player->position.x + player->len > cube->position.x - cube->len) && (player->position.x + player->len < cube->position.x + cube->len))
+		{
+			player->position.x = cube->position.x - cube->len - player->len;
+		}
+	    if((player->position.x - player->len > cube->position.x - cube->len) && (player->position.x - player->len < cube->position.x + cube->len))
+		{
+			player->position.x = cube->position.x + cube->len + player->len;
+		}
+	}
+
+	
+/*	if (player->position.x < (cube->position.x + 1) && player->position.x >(cube->position.x - 1)
+		&&(player->position.y > cube->position.y)){
+	
+		player->landHeight = cube->position.y + 1;
 	}
 	else {
-		//player->landHeight = 0;
+		if (!player->jumping){
+			player->landHeight = 0;
+			player->position.y = player->landHeight;
+		}
 	}
+	if (!(player->position.x < (cube->position.x + 1) && player->position.x >(cube->position.x - 1)
+		&& (player->position.y > cube->position.y))) {
+	//	player->position.y = player->landHeight;
+	}*/
 	//cout << "cubePos" << cube->position.y << endl;
 	//cout << "playerPos" << player->position.y << endl;
-	cout << "playerV" << player->velocity.y << endl;
+	//cout << "playerV" << player->velocity.y << endl;
 
 
 	modelMatrix = translationMatrix(player->position);// *ZAxisRotationMatrix*YAxisRotationMatrix*XAxisRotationMatrix;
@@ -178,7 +244,7 @@ void renderWin1(Window win,int currentTime, int deltaTime)
 	player->render_self(mvpMatrix);
 
 
-	modelMatrix = translationMatrix(Vector3(cube->position));
+	modelMatrix = translationMatrix((cube->position));
 	mvpMatrix = projectionMatrix * viewMatrix * modelMatrix;
 
 

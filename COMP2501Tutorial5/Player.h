@@ -19,6 +19,7 @@ public:
 	Vector3 velocity = Vector3(0, 0, 0);
 	Vector3 jumpV = Vector3(0, 5, 0);
 	Vector3 gAccel = Vector3(0, -9.8, 0);
+	
 	int len = 1;
 	bool jump = false;
 	bool jumping = false;
@@ -84,7 +85,9 @@ public:
 
 		}
 	}
+	void fall(float deltaTime){
 
+	}
 
 	void init_geometry() {
 
